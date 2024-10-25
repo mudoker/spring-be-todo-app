@@ -27,14 +27,14 @@ public class TaskController {
 		return new ResponseEntity<>(HttpStatus.CREATED);
 	}
 
-	@PutMapping("/update-task/{id}")
-	public ResponseEntity<Void> updateTask(@PathVariable int id, @RequestBody TaskModel task) {
+	@PutMapping("/update-task")
+	public ResponseEntity<Void> updateTask(@RequestParam("id") int id, @RequestBody TaskModel task) {
 		taskService.updateTask(id, task);
 		return new ResponseEntity<>(HttpStatus.OK);
 	}
 
-	@DeleteMapping("/delete-task/{id}")
-	public ResponseEntity<Void> deleteTask(@PathVariable int id) {
+	@DeleteMapping("/delete-task")
+	public ResponseEntity<Void> deleteTask(@RequestParam("id") int id) {
 		taskService.deleteTask(id);
 		return new ResponseEntity<>(HttpStatus.NO_CONTENT);
 	}

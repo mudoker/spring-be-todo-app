@@ -14,14 +14,13 @@ import org.mudoker.global.Priority;
 public class TaskModel {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY) // Use IDENTITY for auto-increment
 	private int id;
 
 	@Column(nullable = false, length = 100)
 	private String title;
 
 	@Column(nullable = false)
-	private boolean completed;
+	private boolean isCompleted;
 
 	@Column(nullable = false)
 	private Priority priority;

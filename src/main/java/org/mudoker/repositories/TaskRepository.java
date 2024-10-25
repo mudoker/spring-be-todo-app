@@ -21,9 +21,9 @@ public class TaskRepository {
 		);
 	}
 
-	public int addTask (TaskModel task) {
-		String sql = "insert into tasks (title, isCompleted, priority) values (?, ?, ?)";
-		return jdbcTemplate.update(sql, task.getTitle(), task.isCompleted(), task.getPriority().name());
+	public int addTask(TaskModel task) {
+		String sql = "INSERT INTO tasks (id, title, isCompleted, priority) VALUES (?, ?, ?, ?)";
+		return jdbcTemplate.update(sql, task.getId(), task.getTitle(), task.isCompleted(), task.getPriority().name());
 	}
 
 	public int updateTask(int id, TaskModel task) {
