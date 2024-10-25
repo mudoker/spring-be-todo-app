@@ -16,23 +16,23 @@ public class TaskRepository {
 	public List <TaskModel> getAllTasks () {
 		String sql = "select * from tasks";
 		return jdbcTemplate.query(sql, (rs, rowNum) -> {
-					return new TaskModel(rs.getInt("id"), rs.getString("title"), rs.getBoolean("isCompleted"), Priority.valueOf(rs.getString("priority").toUpperCase()));
+					return new TaskModel(rs.getInt("id"), rs.getString("title"), rs.getBoolean("completed"), Priority.valueOf(rs.getString("priority").toUpperCase()));
 				}
 		);
 	}
 
-	public int addTask(TaskModel task) {
-		String sql = "INSERT INTO tasks (id, title, isCompleted, priority) VALUES (?, ?, ?, ?)";
-		return jdbcTemplate.update(sql, task.getId(), task.getTitle(), task.isCompleted(), task.getPriority().name());
+	public void addTask(TaskModel task) {
+		String sql = "INSERT INTO tasks (id, title, completed, priority) VALUES (?, ?, ?, ?)";
+		jdbcTemplate.update(sql, task.getId(), task.getTitle(), task.isCompleted(), task.getPriority().name());
 	}
 
-	public int updateTask(int id, TaskModel task) {
-		String sql = "UPDATE tasks SET title = ?, isCompleted = ?, priority = ? WHERE id = ?";
-		return jdbcTemplate.update(sql, task.getTitle(), task.isCompleted(), task.getPriority().name(), id);
+	public void updateTask(int id, TaskModel task) {
+		String sql = "UPDATE tasks SET title = ?, completed = ?, priority = ? WHERE id = ?";
+		jdbcTemplate.update(sql, task.getTitle(), task.isCompleted(), task.getPriority().name(), id);
 	}
 
-	public int deleteTask(int id) {
+	public void deleteTask(int id) {
 		String sql = "delete from tasks where id = ?";
-		return jdbcTemplate.update(sql, id);
+		jdbcTemplate.update(sql, id);
 	}
 }

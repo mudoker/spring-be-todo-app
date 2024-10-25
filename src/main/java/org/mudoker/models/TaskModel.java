@@ -20,7 +20,7 @@ public class TaskModel {
 	private String title;
 
 	@Column(nullable = false)
-	private boolean isCompleted;
+	private boolean completed;
 
 	@Column(nullable = false)
 	private Priority priority;

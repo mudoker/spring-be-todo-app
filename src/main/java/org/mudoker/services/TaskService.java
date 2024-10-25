@@ -16,16 +16,16 @@ public class TaskService {
 		return taskRepository.getAllTasks();
 	}
 
-	public int addTask(TaskModel task) {
-		return taskRepository.addTask(task);
+	public void addTask(TaskModel task) {
+		taskRepository.addTask(task);
 	}
 
-	public int updateTask(int id, TaskModel task) {
-		return taskRepository.updateTask(id, task);
+	public void updateTask(int id, TaskModel task) {
+		taskRepository.updateTask(id, task);
 	}
 
-	public int deleteTask(int id) {
-		return taskRepository.deleteTask(id);
+	public void deleteTask(int id) {
+		taskRepository.deleteTask(id);
 	}
 }
 
