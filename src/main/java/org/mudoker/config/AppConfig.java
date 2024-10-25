@@ -1,11 +1,11 @@
 package org.mudoker.config;
 
-import jakarta.annotation.PostConstruct;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.*;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
+import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 
 import javax.sql.DataSource;
 
@@ -13,6 +13,7 @@ import javax.sql.DataSource;
 @EnableTransactionManagement
 @EnableAspectJAutoProxy
 @PropertySource("classpath:application.properties")
+@EnableWebMvc
 @ComponentScan(basePackages = {"org.mudoker.models", "org.mudoker.repositories", "org.mudoker.services", "org.mudoker.controllers"})
 public class AppConfig {
 	@Value("${spring.datasource.url}")
