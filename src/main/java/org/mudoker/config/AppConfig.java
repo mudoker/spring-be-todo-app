@@ -13,7 +13,6 @@ import javax.sql.DataSource;
 @EnableTransactionManagement
 @EnableAspectJAutoProxy
 @PropertySource("classpath:application.properties")
-@EnableWebMvc
 @ComponentScan(basePackages = {"org.mudoker.models", "org.mudoker.repositories", "org.mudoker.services", "org.mudoker.controllers"})
 public class AppConfig {
 	@Value("${spring.datasource.url}")

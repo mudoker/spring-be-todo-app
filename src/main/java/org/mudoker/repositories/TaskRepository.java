@@ -14,7 +14,7 @@ public class TaskRepository {
 	JdbcTemplate jdbcTemplate;
 
 	public List <TaskModel> getAllTasks () {
-		String sql = "select * from task";
+		String sql = "select * from tasks";
 		return jdbcTemplate.query(sql, (rs, rowNum) -> {
 					return new TaskModel(rs.getInt("id"), rs.getString("title"), rs.getBoolean("isCompleted"), Priority.valueOf(rs.getString("priority").toUpperCase()));
 				}
@@ -22,17 +22,17 @@ public class TaskRepository {
 	}
 
 	public int addTask (TaskModel task) {
-		String sql = "insert into task (title, isCompleted, priority) values (?, ?, ?)";
+		String sql = "insert into tasks (title, isCompleted, priority) values (?, ?, ?)";
 		return jdbcTemplate.update(sql, task.getTitle(), task.isCompleted(), task.getPriority().name());
 	}
 
 	public int updateTask(int id, TaskModel task) {
-		String sql = "UPDATE task SET title = ?, isCompleted = ?, priority = ? WHERE id = ?";
+		String sql = "UPDATE tasks SET title = ?, isCompleted = ?, priority = ? WHERE id = ?";
 		return jdbcTemplate.update(sql, task.getTitle(), task.isCompleted(), task.getPriority().name(), id);
 	}
 
 	public int deleteTask(int id) {
-		String sql = "delete from task where id = ?";
+		String sql = "delete from tasks where id = ?";
 		return jdbcTemplate.update(sql, id);
 	}
 }
